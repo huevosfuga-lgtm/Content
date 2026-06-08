@@ -1,0 +1,21 @@
+{
+  "name": "content",
+  "version": "1.0.0",
+  "description": "Video content creation with Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion render",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.474",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.474"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "@types/web": "0.0.166",
+    "typescript": "5.8.2"
+  }
+}
