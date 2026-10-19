@@ -1,0 +1,283 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { WaitlistForm } from '@/components/waitlist-form'
+import { Sun, Leaf, Heart, Egg } from 'lucide-react'
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-[#F3ECDA]">
+      {/* Header */}
+      <header className="sticky top-0 bg-[#F3ECDA]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F3ECDA]/80 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <Image 
+              src="/images/fuga-logo.svg" 
+              alt="Fuga Logo" 
+              width={100} 
+              height={50}
+              className="object-contain h-[45px] w-auto"
+            />
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="#productos" className="text-sm font-medium text-[#1a1a1a] hover:text-[#4E5A2B] transition-colors uppercase tracking-wide">
+              Productos
+            </Link>
+            <Link href="#nosotros" className="text-sm font-medium text-[#1a1a1a] hover:text-[#4E5A2B] transition-colors uppercase tracking-wide">
+              Nosotros
+            </Link>
+            <Link href="#waitlist" className="text-sm font-medium text-[#1a1a1a] hover:text-[#4E5A2B] transition-colors uppercase tracking-wide">
+              Comunidad
+            </Link>
+          </nav>
+          <Button asChild className="bg-[#4E5A2B] hover:bg-[#3d4722] text-white font-bold uppercase tracking-wide">
+            <Link href="#waitlist">Unite</Link>
+          </Button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B]">Huevos de Campo</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] leading-none uppercase">
+                Hay huevos.<br />
+                <span className="text-[#4E5A2B]">Y hay</span>{' '}
+                <span className="text-[#FFC300]">huevos.</span>
+              </h1>
+              <p className="text-lg text-[#4E5A2B] font-semibold uppercase tracking-wide">
+                Huevos de campo.<br />
+                Gallinas libres de jaula.<br />
+                Más sabor.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Button asChild className="bg-[#4E5A2B] hover:bg-[#3d4722] text-white font-bold uppercase tracking-wide h-12 px-8">
+                  <Link href="#waitlist">Unite a la Comunidad</Link>
+                </Button>
+                <Button variant="outline" asChild className="border-2 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white font-bold uppercase tracking-wide h-12 px-8">
+                  <Link href="#productos">Ver Productos</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="relative h-[350px] md:h-[450px] rounded-lg overflow-hidden">
+              <Image 
+                src="/images/hero-gallinas-fuga.png"
+                alt="Gallinas libres de jaula"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a] text-center">
+                  Gallinas<br />Libres de Jaula<br />
+                  <span className="text-[#4E5A2B]">Literal</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statement Section */}
+      <section className="py-16 bg-[#4E5A2B]">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-5xl font-black text-white uppercase leading-tight">
+            Este amarillo<br />
+            <span className="text-[#FFC300]">no es filtro.</span>
+          </h2>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Card 1 */}
+            <div className="bg-[#4E5A2B] p-8 rounded-lg">
+              <h3 className="text-2xl md:text-3xl font-black text-white uppercase leading-tight mb-4">
+                No son orgánicos.<br />
+                <span className="text-[#FFC300]">Son felices.</span>
+              </h3>
+              <Image 
+                src="/images/fuga-logo.svg"
+                alt="Fuga"
+                width={100}
+                height={50}
+                className="object-contain"
+              />
+            </div>
+            
+            {/* Card 2 */}
+            <div className="bg-white p-8 rounded-lg border-2 border-[#1a1a1a]">
+              <h3 className="text-2xl md:text-3xl font-black text-[#1a1a1a] uppercase leading-tight mb-4">
+                Huevos libres de jaula,<br />
+                <span className="text-[#4E5A2B]">literal.</span>
+              </h3>
+              <p className="text-[#4E5A2B] font-medium italic">Fuga</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Values */}
+      <section className="py-12 border-y-2 border-[#d4cfc0]">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <Sun className="w-8 h-8 mx-auto mb-3 text-[#FFC300]" />
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Libertad<br />para vivir</p>
+            </div>
+            <div className="text-center">
+              <Leaf className="w-8 h-8 mx-auto mb-3 text-[#4E5A2B]" />
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Alimentación<br />natural</p>
+            </div>
+            <div className="text-center">
+              <Heart className="w-8 h-8 mx-auto mb-3 text-[#4E5A2B]" />
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Gallinas felices,<br />huevos felices</p>
+            </div>
+            <div className="text-center">
+              <Egg className="w-8 h-8 mx-auto mb-3 text-[#1a1a1a]" />
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Más sabor.<br />Más color.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section id="productos" className="py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a] uppercase mb-4">Nuestros Productos</h2>
+            <p className="text-[#4E5A2B] font-medium">
+              Disponibles pronto en tu zona. Unite a la comunidad.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Maple 30 */}
+            <div className="bg-white rounded-lg overflow-hidden border-2 border-[#1a1a1a]">
+              <div className="relative h-[280px] bg-white flex items-center justify-center">
+                <Image 
+                  src="/images/maple-30-real.png"
+                  alt="Maple de 30 huevos Fuga"
+                  fill
+                  className="object-contain p-4"
+                />
+              </div>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-black text-[#1a1a1a] uppercase mb-2">Maple 30 Huevos</h3>
+                <p className="text-[#4E5A2B] text-sm mb-4">
+                  Perfecto para familias. 30 huevos frescos de gallinas que viven afuera, comen natural y ponen huevos con más sabor.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs font-bold uppercase bg-[#FFC300] text-[#1a1a1a] px-3 py-1 rounded-full">Pastoriles</span>
+                  <span className="text-xs font-bold uppercase bg-[#4E5A2B] text-white px-3 py-1 rounded-full">Sin jaulas</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Maple 6 */}
+            <div className="bg-white rounded-lg overflow-hidden border-2 border-[#1a1a1a]">
+              <div className="relative h-[280px] bg-white flex items-center justify-center">
+                <Image 
+                  src="/images/maple-30-real.png"
+                  alt="Maple de 6 huevos Fuga"
+                  fill
+                  className="object-contain p-4"
+                />
+              </div>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-black text-[#1a1a1a] uppercase mb-2">Maple 6 Huevos</h3>
+                <p className="text-[#4E5A2B] text-sm mb-4">
+                  Ideal para probar la calidad Fuga. 6 huevos premium de gallinas libres y felices.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs font-bold uppercase bg-[#FFC300] text-[#1a1a1a] px-3 py-1 rounded-full">Pastoriles</span>
+                  <span className="text-xs font-bold uppercase bg-[#4E5A2B] text-white px-3 py-1 rounded-full">Sin jaulas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="nosotros" className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="mb-6">
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B] mb-2">Nuestra filosofía</p>
+                  <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] uppercase leading-tight">
+                    Directa.<br />
+                    Honesta.<br />
+                    Rural.<br />
+                    Irónica.<br />
+                    Visual.
+                  </h2>
+                </div>
+                <p className="text-[#4E5A2B] leading-relaxed mb-4">
+                  No seguimos modas. Seguimos a nuestras gallinas. Viven afuera, comen natural y ponen huevos con más sabor, más color y más carácter.
+                </p>
+                <p className="text-[#1a1a1a] font-bold text-lg">Así de simple.</p>
+              </div>
+              <div className="flex flex-col items-center gap-6">
+                <Image 
+                  src="/images/logo-fuga-white.png"
+                  alt="Fuga - Gallina escapando"
+                  width={200}
+                  height={200}
+                  className="object-contain"
+                />
+                <div className="text-center text-sm text-[#4E5A2B] space-y-1">
+                  <p className="font-bold uppercase">Bienestar animal</p>
+                  <p className="font-bold uppercase">Sabor real</p>
+                  <p className="font-bold uppercase">Origen transparente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Section */}
+      <section id="waitlist" className="py-16 md:py-20 bg-[#4E5A2B]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black text-white uppercase mb-4">Unite a la Comunidad</h2>
+              <p className="text-white/90">
+                Estamos preparando todo para empezar a distribuir. Dejanos tus datos y te avisamos cuando estemos listos.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 md:p-8">
+              <WaitlistForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#1a1a1a] py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Image 
+                src="/images/fuga-logo.svg" 
+                alt="Fuga Logo" 
+                width={100} 
+                height={50}
+                className="object-contain h-[45px] w-auto"
+              />
+            </div>
+            <p className="text-sm text-white/60">
+              © 2024 Fuga. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
