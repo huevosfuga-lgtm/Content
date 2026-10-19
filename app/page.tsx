@@ -2,7 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { WaitlistForm } from '@/components/waitlist-form'
-import { Sun, Leaf, Heart, Egg } from 'lucide-react'
+import { FaqSection } from '@/components/faq-section'
+import { WhatsappButton } from '@/components/whatsapp-button'
+import { SITE, whatsappUrl } from '@/lib/site-config'
+import { Sun, Leaf, Heart, Egg, MapPin, Instagram, Mail, MessageCircle } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -28,6 +31,9 @@ export default function HomePage() {
             </Link>
             <Link href="#waitlist" className="text-sm font-medium text-[#1a1a1a] hover:text-[#4E5A2B] transition-colors uppercase tracking-wide">
               Comunidad
+            </Link>
+            <Link href="#preguntas" className="text-sm font-medium text-[#1a1a1a] hover:text-[#4E5A2B] transition-colors uppercase tracking-wide">
+              Preguntas
             </Link>
           </nav>
           <Button asChild className="bg-[#4E5A2B] hover:bg-[#3d4722] text-white font-bold uppercase tracking-wide">
@@ -146,13 +152,19 @@ export default function HomePage() {
       </section>
 
       {/* Products Section */}
-      <section id="productos" className="py-16 md:py-20">
+      <section id="productos" className="scroll-mt-20 py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a] uppercase mb-4">Nuestros Productos</h2>
             <p className="text-[#4E5A2B] font-medium">
               Disponibles pronto en tu zona. Unite a la comunidad.
             </p>
+            {SITE.zonas.length > 0 && (
+              <p className="mt-4 inline-flex items-center gap-2 bg-white border-2 border-[#1a1a1a] rounded-full px-4 py-2 text-sm font-bold text-[#1a1a1a]">
+                <MapPin className="h-4 w-4 text-[#4E5A2B]" />
+                Llegamos a: {SITE.zonas.join(', ')}
+              </p>
+            )}
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Maple 30 */}
@@ -166,7 +178,12 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-6 bg-white">
-                <h3 className="text-xl font-black text-[#1a1a1a] uppercase mb-2">Maple 30 Huevos</h3>
+                <div className="flex items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-black text-[#1a1a1a] uppercase">Maple 30 Huevos</h3>
+                  {SITE.precios.maple_30 && (
+                    <p className="text-sm font-bold text-[#4E5A2B] whitespace-nowrap">desde {SITE.precios.maple_30}</p>
+                  )}
+                </div>
                 <p className="text-[#4E5A2B] text-sm mb-4">
                   Perfecto para familias. 30 huevos frescos de gallinas que viven afuera, comen natural y ponen huevos con más sabor.
                 </p>
@@ -188,7 +205,12 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-6 bg-white">
-                <h3 className="text-xl font-black text-[#1a1a1a] uppercase mb-2">Maple 6 Huevos</h3>
+                <div className="flex items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-black text-[#1a1a1a] uppercase">Maple 6 Huevos</h3>
+                  {SITE.precios.maple_6 && (
+                    <p className="text-sm font-bold text-[#4E5A2B] whitespace-nowrap">desde {SITE.precios.maple_6}</p>
+                  )}
+                </div>
                 <p className="text-[#4E5A2B] text-sm mb-4">
                   Ideal para probar la calidad Fuga. 6 huevos premium de gallinas libres y felices.
                 </p>
@@ -203,7 +225,7 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section id="nosotros" className="py-16 md:py-20 bg-white">
+      <section id="nosotros" className="scroll-mt-20 py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -242,8 +264,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <FaqSection />
+
       {/* Waitlist Section */}
-      <section id="waitlist" className="py-16 md:py-20 bg-[#4E5A2B]">
+      <section id="waitlist" className="scroll-mt-20 py-16 md:py-20 bg-[#4E5A2B]">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
@@ -260,24 +284,39 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] py-8">
+      <footer className="bg-[#1a1a1a] py-10">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <Image 
-                src="/images/fuga-logo.svg" 
-                alt="Fuga Logo" 
-                width={100} 
-                height={50}
-                className="object-contain h-[45px] w-auto"
-              />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <Image 
+              src="/images/fuga-logo.svg" 
+              alt="Fuga Logo" 
+              width={100} 
+              height={50}
+              className="object-contain h-[45px] w-auto"
+            />
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
+              {whatsappUrl() && (
+                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFC300] transition-colors">
+                  <MessageCircle className="h-4 w-4" /> WhatsApp
+                </a>
+              )}
+              {SITE.instagram && (
+                <a href={`https://instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFC300] transition-colors">
+                  <Instagram className="h-4 w-4" /> @{SITE.instagram}
+                </a>
+              )}
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-[#FFC300] transition-colors">
+                <Mail className="h-4 w-4" /> {SITE.email}
+              </a>
             </div>
-            <p className="text-sm text-white/60">
-              © 2024 Fuga. Todos los derechos reservados.
-            </p>
           </div>
+          <p className="mt-8 text-center md:text-right text-xs text-white/50">
+            © {new Date().getFullYear()} Fuga. Todos los derechos reservados.
+          </p>
         </div>
       </footer>
+
+      <WhatsappButton />
     </div>
   )
 }

@@ -75,6 +75,8 @@ export function WaitlistForm() {
   const [addressValidated, setAddressValidated] = useState(false)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const resultsRef = useRef<HTMLDivElement>(null)
+  const paso1Ref = useRef<HTMLDivElement>(null)
+  const [paso, setPaso] = useState<1 | 2>(1)
 
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
@@ -215,13 +217,29 @@ export function WaitlistForm() {
     }))
   }
 
+  const irAlPaso2 = () => {
+    const inputs = paso1Ref.current?.querySelectorAll('input') ?? []
+    for (const input of Array.from(inputs)) {
+      if (!input.checkValidity()) {
+        input.reportValidity()
+        return
+      }
+    }
+    if (!addressValidated) {
+      toast.error('Escribi tu direccion y hace click en una opcion de la lista de sugerencias que aparece debajo')
+      document.getElementById('direccion')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      return
+    }
+    setPaso(2)
+    document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!addressValidated) {
+      setPaso(1)
       toast.error('Escribi tu direccion y hace click en una opcion de la lista de sugerencias que aparece debajo')
-      // Scroll to address field
-      document.getElementById('direccion')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
     }
 
@@ -271,6 +289,7 @@ export function WaitlistForm() {
         })
         setAddressQuery('')
         setAddressValidated(false)
+        setPaso(1)
       }
     } catch (error) {
       console.error('Error:', error)
@@ -282,7 +301,24 @@ export function WaitlistForm() {
 
   return (
     <div className="space-y-6">
+      {/* Step indicator */}
+      <div className="flex items-center gap-3">
+        {[1, 2].map((n) => (
+          <div key={n} className="flex items-center gap-2 flex-1">
+            <span className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold ${paso >= n ? 'bg-[#4E5A2B] text-white' : 'bg-[#F3ECDA] text-[#1a1a1a]/50'}`}>
+              {paso > n ? <Check className="h-4 w-4" /> : n}
+            </span>
+            <span className={`text-xs font-bold uppercase tracking-wide ${paso >= n ? 'text-[#1a1a1a]' : 'text-[#1a1a1a]/50'}`}>
+              {n === 1 ? 'Tus datos' : 'Tu pedido'}
+            </span>
+            {n === 1 && <span className={`h-0.5 flex-1 ${paso > 1 ? 'bg-[#4E5A2B]' : 'bg-[#F3ECDA]'}`} />}
+          </div>
+        ))}
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
+        {paso === 1 && (
+        <div ref={paso1Ref} className="space-y-6">
         {/* Personal Info Section */}
         <div className="space-y-4">
           <h3 className="font-bold text-[#1a1a1a] uppercase tracking-wide border-b-2 border-[#FFC300] pb-2">Datos personales</h3>
@@ -435,6 +471,14 @@ export function WaitlistForm() {
             )}
           </div>
 
+          <Button type="button" onClick={irAlPaso2} className="w-full bg-[#4E5A2B] hover:bg-[#3d4722] text-white font-bold uppercase tracking-wide h-12" size="lg">
+            Siguiente: elegí tu pedido
+          </Button>
+        </div>
+        )}
+
+        {paso === 2 && (
+        <div className="space-y-6">
           {/* Products Section */}
           <div className="space-y-4">
             <h3 className="font-bold text-[#1a1a1a] uppercase tracking-wide border-b-2 border-[#FFC300] pb-2">Selecciona tus productos</h3>
@@ -524,6 +568,11 @@ export function WaitlistForm() {
           <Button type="submit" className="w-full bg-[#4E5A2B] hover:bg-[#3d4722] text-white font-bold uppercase tracking-wide h-12" size="lg" disabled={loading}>
             {loading ? 'Registrando...' : 'Unite a la Comunidad'}
           </Button>
+          <Button type="button" variant="ghost" onClick={() => setPaso(1)} disabled={loading} className="w-full text-[#4E5A2B]">
+            Volver a mis datos
+          </Button>
+        </div>
+        )}
         </form>
       </div>
   )

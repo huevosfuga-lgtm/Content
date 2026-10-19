@@ -12,3 +12,4 @@ node_modules/
 .env
 # Exportaciones de datos (contienen datos personales de clientes, el repo es publico)
 *.csv
+tsconfig.tsbuildinfo

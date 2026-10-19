@@ -34,6 +34,16 @@ type WaitlistData = {
   total_mensual: number
 }
 
+// Escapa el texto que escribió el usuario antes de meterlo en el HTML del email
+function esc(value: unknown) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 export async function POST(request: Request) {
   try {
     const data: WaitlistData = await request.json()
@@ -103,33 +113,33 @@ export async function POST(request: Request) {
           
           <h3>Datos del cliente:</h3>
           <table style="border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Nombre:</td><td style="padding: 5px 0;"><strong>${data.nombre}</strong></td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Email:</td><td style="padding: 5px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Telefono:</td><td style="padding: 5px 0;"><a href="tel:${data.telefono}">${data.telefono}</a></td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Nombre:</td><td style="padding: 5px 0;"><strong>${esc(data.nombre)}</strong></td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Email:</td><td style="padding: 5px 0;"><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Telefono:</td><td style="padding: 5px 0;"><a href="tel:${esc(data.telefono)}">${esc(data.telefono)}</a></td></tr>
           </table>
 
           <h3>Direccion de entrega:</h3>
           <table style="border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Direccion:</td><td style="padding: 5px 0;"><strong>${direccionCompleta}</strong></td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Calle:</td><td style="padding: 5px 0;">${data.calle} ${data.numero}</td></tr>
-            ${data.piso_depto ? `<tr><td style="padding: 5px 15px 5px 0; color: #666;">Piso/Depto:</td><td style="padding: 5px 0;">${data.piso_depto}</td></tr>` : ''}
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Ciudad:</td><td style="padding: 5px 0;">${data.ciudad}</td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Provincia:</td><td style="padding: 5px 0;">${data.provincia}</td></tr>
-            ${data.codigo_postal ? `<tr><td style="padding: 5px 15px 5px 0; color: #666;">Codigo Postal:</td><td style="padding: 5px 0;">${data.codigo_postal}</td></tr>` : ''}
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Direccion:</td><td style="padding: 5px 0;"><strong>${esc(direccionCompleta)}</strong></td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Calle:</td><td style="padding: 5px 0;">${esc(data.calle)} ${esc(data.numero)}</td></tr>
+            ${data.piso_depto ? `<tr><td style="padding: 5px 15px 5px 0; color: #666;">Piso/Depto:</td><td style="padding: 5px 0;">${esc(data.piso_depto)}</td></tr>` : ''}
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Ciudad:</td><td style="padding: 5px 0;">${esc(data.ciudad)}</td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Provincia:</td><td style="padding: 5px 0;">${esc(data.provincia)}</td></tr>
+            ${data.codigo_postal ? `<tr><td style="padding: 5px 15px 5px 0; color: #666;">Codigo Postal:</td><td style="padding: 5px 0;">${esc(data.codigo_postal)}</td></tr>` : ''}
           </table>
           
-          ${googleMapsUrl ? `<p><a href="${googleMapsUrl}" style="color: #4285f4;">Ver en Google Maps</a></p>` : ''}
+          ${googleMapsUrl ? `<p><a href="${esc(googleMapsUrl)}" style="color: #4285f4;">Ver en Google Maps</a></p>` : ''}
 
           <h3>Pedido solicitado:</h3>
           <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-            <pre style="margin: 0; font-family: sans-serif;">${productosTexto || 'No selecciono productos'}</pre>
+            <pre style="margin: 0; font-family: sans-serif;">${esc(productosTexto || 'No selecciono productos')}</pre>
           </div>
 
           <h3>Frecuencia de entrega:</h3>
           <table style="border-collapse: collapse; margin-bottom: 20px;">
             <tr><td style="padding: 5px 15px 5px 0; color: #666;">Entregas por mes:</td><td style="padding: 5px 0;"><strong>${frecuenciaTexto}</strong></td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Cantidad por entrega:</td><td style="padding: 5px 0;">${data.cantidad_por_entrega} producto(s)</td></tr>
-            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Total mensual:</td><td style="padding: 5px 0;"><strong>${data.total_mensual} producto(s)</strong></td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Cantidad por entrega:</td><td style="padding: 5px 0;">${esc(data.cantidad_por_entrega)} producto(s)</td></tr>
+            <tr><td style="padding: 5px 15px 5px 0; color: #666;">Total mensual:</td><td style="padding: 5px 0;"><strong>${esc(data.total_mensual)} producto(s)</strong></td></tr>
           </table>
 
           <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
