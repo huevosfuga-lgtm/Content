@@ -7,7 +7,8 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Resend es opcional: sin RESEND_API_KEY se guarda el registro pero no se manda el email
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 type ProductoSeleccionado = {
   producto: string
@@ -92,7 +93,7 @@ export async function POST(request: Request) {
       : null
 
     // Send email notification
-    try {
+    if (resend) try {
       await resend.emails.send({
         from: 'Fuga Waitlist <onboarding@resend.dev>',
         to: 'huevos.fuga@gmail.com',
