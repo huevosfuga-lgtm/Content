@@ -140,7 +140,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <Sun className="w-8 h-8 mx-auto mb-3 text-[#FFC300]" />
-              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Libertad<br />para vivir</p>
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Libres</p>
             </div>
             <div className="text-center">
               <Leaf className="w-8 h-8 mx-auto mb-3 text-[#4E5A2B]" />
@@ -148,7 +148,7 @@ export default function HomePage() {
             </div>
             <div className="text-center">
               <Heart className="w-8 h-8 mx-auto mb-3 text-[#4E5A2B]" />
-              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Gallinas felices,<br />huevos felices</p>
+              <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">Acceso<br />a pasto</p>
             </div>
             <div className="text-center">
               <Egg className="w-8 h-8 mx-auto mb-3 text-[#1a1a1a]" />
