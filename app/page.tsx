@@ -47,14 +47,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B]">Huevos de Campo</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B]">Huevos Pastoriles</p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] leading-none uppercase">
-                Hay huevos.<br />
-                <span className="text-[#4E5A2B]">Y hay</span>{' '}
-                <span className="text-[#FFC300]">huevos.</span>
+                Importa un huevo<br />
+                <span className="text-[#4E5A2B]">de dónde</span>{' '}
+                <span className="text-[#FFC300]">viene.</span>
               </h1>
               <p className="text-lg text-[#4E5A2B] font-semibold uppercase tracking-wide">
-                Huevos de campo.<br />
                 Gallinas libres de jaula.<br />
                 Más sabor.
               </p>
