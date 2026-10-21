@@ -181,7 +181,7 @@ export default function HomePage() {
                   src="/images/maple-30.webp"
                   alt="Maple de 30 huevos Fuga"
                   fill
-                  className="object-contain p-4"
+                  className="object-contain px-4 pt-10 pb-2"
                 />
               </div>
               <div className="p-6 bg-white">
