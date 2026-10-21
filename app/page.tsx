@@ -105,8 +105,8 @@ export default function HomePage() {
             {/* Card 1 */}
             <div className="bg-[#4E5A2B] p-8 rounded-lg">
               <h3 className="text-2xl md:text-3xl font-black text-white uppercase leading-tight mb-4">
-                No son orgánicos.<br />
-                <span className="text-[#FFC300]">Son felices.</span>
+                Agroecológicos.<br />
+                <span className="text-[#FFC300]">Alto en nutrientes.</span>
               </h3>
               <Image 
                 src="/images/fuga-logo.svg"
