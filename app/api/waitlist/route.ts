@@ -2,10 +2,13 @@ import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+// Se crea al recibir el pedido (no al compilar), así el build no falla si faltan las variables
+function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+}
 
 // Resend es opcional: sin RESEND_API_KEY se guarda el registro pero no se manda el email
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
@@ -49,7 +52,7 @@ export async function POST(request: Request) {
     const data: WaitlistData = await request.json()
 
     // Insert into Supabase
-    const { error: dbError } = await supabase
+    const { error: dbError } = await getSupabase()
       .from('waitlist')
       .insert([{
         nombre: data.nombre,
