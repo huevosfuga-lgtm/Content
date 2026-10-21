@@ -240,11 +240,11 @@ export default function HomePage() {
                 <div className="mb-6">
                   <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B] mb-2">Nuestra filosofía</p>
                   <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] uppercase leading-tight">
-                    Directa.<br />
+                    Transparente.<br />
                     Honesta.<br />
-                    Rural.<br />
+                    Responsable.<br />
                     Irónica.<br />
-                    Visual.
+                    Eficiente.
                   </h2>
                 </div>
                 <p className="text-[#4E5A2B] leading-relaxed mb-4">
