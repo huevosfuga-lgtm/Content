@@ -48,8 +48,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <p className="text-sm font-bold uppercase tracking-widest text-[#4E5A2B]">Huevos Pastoriles</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] leading-none uppercase">
-                Importa un huevo<br />
+              <h1 className="text-[1.875rem] sm:text-4xl md:text-[2.125rem] lg:text-[2.875rem] xl:text-[3.5rem] font-black text-[#1a1a1a] leading-none uppercase">
+                <span className="whitespace-nowrap">Importa un huevo</span><br />
                 <span className="text-[#4E5A2B]">de dónde</span>{' '}
                 <span className="text-[#FFC300]">viene.</span>
               </h1>
