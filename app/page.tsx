@@ -69,10 +69,10 @@ export default function HomePage() {
             </div>
             <div className="relative h-[350px] md:h-[450px] rounded-lg overflow-hidden">
               <Image 
-                src="/images/hero-gallinero.webp"
-                alt="Gallinero móvil de Fuga en el campo al atardecer"
+                src="/images/hero-gallinas-adentro.webp"
+                alt="Gallinas Fuga sobre pasto fresco dentro del gallinero móvil"
                 fill
-                className="object-cover object-[center_62%]"
+                className="object-cover object-[center_55%]"
                 priority
               />
               <div className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2">
