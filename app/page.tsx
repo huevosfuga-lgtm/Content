@@ -205,7 +205,7 @@ export default function HomePage() {
             <div className="bg-white rounded-lg overflow-hidden border-2 border-[#1a1a1a]">
               <div className="relative h-[280px] bg-white flex items-center justify-center">
                 <Image 
-                  src="/images/maple-6.webp"
+                  src="/images/maple-30-real.png"
                   alt="Maple de 6 huevos Fuga"
                   fill
                   className="object-contain p-4"
