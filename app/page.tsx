@@ -219,7 +219,7 @@ export default function HomePage() {
                   )}
                 </div>
                 <p className="text-[#4E5A2B] text-sm mb-4">
-                  Ideal para probar la calidad Fuga. 6 huevos premium de gallinas libres y felices.
+                  Ideal para probar la calidad Fuga. 6 huevos premium de gallinas libres.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="text-xs font-bold uppercase bg-[#FFC300] text-[#1a1a1a] px-3 py-1 rounded-full">Pastoriles</span>
