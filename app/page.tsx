@@ -118,12 +118,17 @@ export default function HomePage() {
             </div>
             
             {/* Card 2 */}
-            <div className="bg-white p-8 rounded-lg border-2 border-[#1a1a1a]">
-              <h3 className="text-2xl md:text-3xl font-black text-[#1a1a1a] uppercase leading-tight mb-4">
-                Huevos libres de jaula,<br />
-                <span className="text-[#4E5A2B]">literal.</span>
-              </h3>
-              <p className="text-[#4E5A2B] font-medium italic">Fuga</p>
+            <div className="relative min-h-[260px] rounded-lg overflow-hidden border-2 border-[#1a1a1a]">
+              <Image
+                src="/images/fuga-movil.webp"
+                alt="Fuga Móvil, el gallinero móvil de Fuga en el campo al atardecer"
+                fill
+                sizes="(min-width: 768px) 450px, 100vw"
+                className="object-cover object-[center_62%]"
+              />
+              <div className="absolute bottom-4 left-4 bg-white/90 rounded-full px-4 py-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">Fuga Móvil</p>
+              </div>
             </div>
           </div>
         </div>
