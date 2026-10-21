@@ -68,12 +68,15 @@ export default function HomePage() {
               </div>
             </div>
             <div className="relative h-[350px] md:h-[450px] rounded-lg overflow-hidden">
-              <Image 
-                src="/images/hero-gallinas-adentro.webp"
-                alt="Gallinas Fuga sobre pasto fresco dentro del gallinero móvil"
-                fill
-                className="object-cover object-[center_55%]"
-                priority
+              <video
+                src="/images/hero-gallinas.mp4"
+                poster="/images/hero-gallinas-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="Gallinas Fuga caminando sobre pasto fresco dentro del gallinero móvil"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2">
                 <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a] text-center">
