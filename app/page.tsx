@@ -69,10 +69,10 @@ export default function HomePage() {
             </div>
             <div className="relative h-[350px] md:h-[450px] rounded-lg overflow-hidden">
               <Image 
-                src="/images/hero-gallinas-fuga.png"
-                alt="Gallinas libres de jaula"
+                src="/images/hero-gallinero.webp"
+                alt="Gallinero móvil de Fuga en el campo al atardecer"
                 fill
-                className="object-cover"
+                className="object-cover object-[center_62%]"
                 priority
               />
               <div className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2">
