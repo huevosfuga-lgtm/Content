@@ -14,6 +14,13 @@ export const SITE = {
   // Barrios / localidades donde entregan. Ej: ['Núñez', 'Belgrano', 'Saavedra']
   zonas: [] as string[],
 
+  // Zonas de entrega que se muestran en la franja verde. 'detalle' es opcional.
+  zonasEntrega: [
+    { zona: 'CABA', detalle: 'Recoleta · Palermo · Belgrano' },
+    { zona: 'Pilar' },
+    { zona: 'Bancalari' },
+  ] as { zona: string; detalle?: string }[],
+
   // Precio orientativo por producto. Ej: '$12.000'. Vacío = no se muestra.
   precios: {
     maple_30: '',

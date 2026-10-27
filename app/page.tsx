@@ -88,13 +88,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Statement Section */}
-      <section className="py-16 bg-[#4E5A2B]">
+      {/* Delivery Zones */}
+      <section id="zonas" className="scroll-mt-20 py-14 md:py-16 bg-[#4E5A2B]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black text-white uppercase leading-tight">
-            Este amarillo<br />
-            <span className="text-[#FFC300]">no es filtro.</span>
+          <h2 className="flex items-center justify-center gap-2 text-2xl md:text-4xl font-black text-white uppercase leading-tight mb-8 md:mb-10">
+            <MapPin className="h-6 w-6 md:h-9 md:w-9 text-[#FFC300]" />
+            Zonas de entrega
           </h2>
+          <ul className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 md:gap-0 md:divide-x-2 md:divide-white/20">
+            {SITE.zonasEntrega.map(({ zona, detalle }) => (
+              <li key={zona} className="md:px-12">
+                <p className="text-3xl md:text-5xl font-black text-[#FFC300] uppercase leading-none">{zona}</p>
+                {detalle && (
+                  <p className="mt-2 text-sm md:text-base font-bold text-white/80 uppercase tracking-wide">{detalle}</p>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
