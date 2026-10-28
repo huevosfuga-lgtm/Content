@@ -21,11 +21,13 @@ export const SITE = {
     { zona: 'Bancalari' },
   ] as { zona: string; detalle?: string }[],
 
-  // Precio orientativo por producto. Ej: '$12.000'. Vacío = no se muestra.
+  // Precio por producto. Ej: '$12.000'. Vacío = no se muestra.
   precios: {
-    maple_30: '',
+    maple_30: '$14.500',
     maple_6: '',
   },
+  // Texto chico que va debajo del precio
+  precioNota: 'Envío incluido',
 }
 
 export const FAQS: { pregunta: string; respuesta: string }[] = [

@@ -195,10 +195,13 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-6 bg-white">
-                <div className="flex items-baseline justify-between gap-2 mb-2">
+                <div className="flex items-start justify-between gap-3 mb-2">
                   <h3 className="text-xl font-black text-[#1a1a1a] uppercase">Maple 30 Huevos</h3>
                   {SITE.precios.maple_30 && (
-                    <p className="text-sm font-bold text-[#4E5A2B] whitespace-nowrap">desde {SITE.precios.maple_30}</p>
+                    <div className="text-right whitespace-nowrap">
+                      <p className="text-xl font-black text-[#1a1a1a] leading-none">{SITE.precios.maple_30}</p>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#4E5A2B]">{SITE.precioNota}</p>
+                    </div>
                   )}
                 </div>
                 <p className="text-[#4E5A2B] text-sm mb-4">
@@ -222,10 +225,13 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-6 bg-white">
-                <div className="flex items-baseline justify-between gap-2 mb-2">
+                <div className="flex items-start justify-between gap-3 mb-2">
                   <h3 className="text-xl font-black text-[#1a1a1a] uppercase">Maple 6 Huevos</h3>
                   {SITE.precios.maple_6 && (
-                    <p className="text-sm font-bold text-[#4E5A2B] whitespace-nowrap">desde {SITE.precios.maple_6}</p>
+                    <div className="text-right whitespace-nowrap">
+                      <p className="text-xl font-black text-[#1a1a1a] leading-none">{SITE.precios.maple_6}</p>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#4E5A2B]">{SITE.precioNota}</p>
+                    </div>
                   )}
                 </div>
                 <p className="text-[#4E5A2B] text-sm mb-4">
