@@ -24,7 +24,7 @@ export const SITE = {
   // Precio por producto. Ej: '$12.000'. Vacío = no se muestra.
   precios: {
     maple_30: '$14.500',
-    maple_6: '',
+    maple_6: '$4.500',
   },
   // Texto chico que va debajo del precio
   precioNota: 'Envío incluido',
