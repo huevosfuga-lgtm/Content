@@ -325,7 +325,7 @@ export default function HomePage() {
               )}
               {SITE.instagram && (
                 <a href={`https://instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFC300] transition-colors">
-                  <Instagram className="h-4 w-4" /> @{SITE.instagram}
+                  <Instagram className="h-4 w-4" /> {SITE.instagram}
                 </a>
               )}
               <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-[#FFC300] transition-colors">

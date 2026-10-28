@@ -7,7 +7,7 @@ export const SITE = {
   whatsappMensaje: 'Hola Fuga! Quiero saber más sobre los huevos',
 
   // Usuario de Instagram sin @. Ej: 'huevosfuga'
-  instagram: '',
+  instagram: 'huevosfuga',
 
   email: 'huevos.fuga@gmail.com',
 
